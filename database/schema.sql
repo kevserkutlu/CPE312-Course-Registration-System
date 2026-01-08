@@ -80,3 +80,23 @@ SELECT * FROM student;
 SELECT * FROM instructor;
 SELECT * FROM course;
 SELECT * FROM enrollment;
+
+
+CREATE VIEW student_course_list AS
+SELECT 
+    s.fname AS student_first_name, 
+    s.lname AS student_last_name, 
+    c.course_name,
+    e.grade
+FROM student s
+JOIN enrollment e ON s.student_id = e.student_id
+JOIN course c ON e.course_id = c.course_id;
+
+CREATE VIEW instructor_workload AS
+SELECT 
+    i.fname AS instructor_first_name, 
+    i.lname AS instructor_last_name, 
+    COUNT(c.course_id) AS total_courses
+FROM instructor i
+LEFT JOIN course c ON i.instructor_id = c.instructor_id
+GROUP BY i.instructor_id, i.fname, i.lname;
