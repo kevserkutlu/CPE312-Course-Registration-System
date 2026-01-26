@@ -1,22 +1,28 @@
-# 📄 Documentation & Reports (Dokümantasyon ve Raporlar)
+# 📄 Documentation & Reports
 
-Bu klasör, projenin planlama, tasarım ve raporlama aşamalarına ait tüm belgeleri içerir.
+This folder contains all documentation from the planning, design, and reporting phases of the project.
 
-### 📂 İçerik Yapısı
-* **`Project_Report.pdf`**: Hocanın istediği tüm başlıkları (Overview, Problem Definition, Requirements, Design, Implementation, Conclusion) içeren ana final raporu.
+### 📂 Contents
+
+* **`Project_Report.pdf`**: The main final report containing all required sections (Overview, Problem Definition, Requirements, Design, Implementation, Conclusion).
 * **`Diagrams/`**: 
-    * **ER_Diagram.png**: Veritabanı varlık-ilişki diyagramı (Conceptual Design).
-    * **Relational_Schema.png**: Tablo yapılarını ve anahtarları gösteren şema (Logical Design).
-* **`Proposal.pdf`**: Dönem başında teslim edilen tek sayfalık proje önerisi.
+    * **ER_Diagram.png**: Entity-Relationship diagram for the database (Conceptual Design).
+    * **Relational_Schema.png**: Diagram showing table structures and keys (Logical Design).
+* **`Proposal.pdf`**: The one-page project proposal submitted at the beginning of the term.
+* **`Course Registration System_Proposal.pdf`**: Detailed project proposal document.
 
-### 📝 Final Raporu Başlıkları (Checklist)
-Hocamızın belirttiği üzere final raporumuz şu bölümlerden oluşmaktadır:
-1. [ ] Project Overview & Problem Definition
-2. [ ] System Requirements
-3. [ ] Conceptual Design (ER Diagrams)
-4. [ ] Logical Design (Relational Diagrams)
-5. [ ] Implementation Details (Env, Frameworks, SQL Views/Indices)
-6. [ ] Conclusion & References
+### 📝 Final Report Structure (Checklist)
 
-### 📅 Önemli Not
-Tüm dokümanlar en geç **28.01.2026 - 17:00** tarihine kadar güncel hale getirilmiş olmalıdır.
+As specified by the instructor, the final report consists of the following sections:
+
+1. ✅ Project Overview & Problem Definition
+2. ✅ System Requirements
+3. ✅ Conceptual Design (ER Diagrams)
+4. ✅ Logical Design (Relational Diagrams)
+5. ✅ Implementation Details (Environment, Frameworks, SQL)
+6. ✅ Conclusion & References
+
+### 📅 Important Note
+
+All documentation must be up-to-date by **January 28, 2026 - 17:00**.
+

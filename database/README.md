@@ -1,9 +1,17 @@
 # 🗄️ Database
-Bu klasör, sistemin veritabanı şemasını ve başlangıç verilerini içerir.
 
-### 📄 Dosyalar
-* **`schema.sql`**: Tabloların oluşturulması (`CREATE TABLE`), ilişkilerin tanımlanması (`FOREIGN KEY`) ve kısıtlamaların (Constraints) bulunduğu ana script.
-* **`data.sql` (Opsiyonel)**: Sistemi test etmek için kullanılacak örnek öğrenci, ders ve eğitmen verileri.
+This folder contains the database schema and initialization data for the system.
 
-### 🛠️ Kurulum
-Bu klasördeki SQL dosyalarını [Seçtiğiniz DBMS - örn: PostgreSQL] arayüzünde çalıştırarak veritabanını hazır hale getirebilirsiniz.
+### 📄 Files
+
+* **`schema.sql`**: The main SQL script containing table creation (`CREATE TABLE`), relationship definitions (`FOREIGN KEY`), and constraints.
+* **`data.sql` (Optional)**: Sample student, course, and instructor data for testing the system.
+
+### 🛠️ Setup
+
+You can prepare the database by running the SQL files in this folder using your chosen DBMS (e.g., PostgreSQL).
+
+```sql
+psql -U postgres -d course_registration -f schema.sql
+```
+
