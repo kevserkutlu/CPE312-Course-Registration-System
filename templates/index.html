@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Course Registration System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Course Registration System</h1>
+            <p>University Course Management System</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="switchTab('students')">👥 Students</button>
+            <button class="tab-btn" onclick="switchTab('instructors')">👨‍🏫 Instructors</button>
+            <button class="tab-btn" onclick="switchTab('courses')">📖 Courses</button>
+            <button class="tab-btn" onclick="switchTab('enrollments')">📋 Enrollments</button>
+            <button class="tab-btn" onclick="switchTab('reports')">📊 Reports</button>
+        </nav>
+
+        <!-- STUDENTS TAB -->
+        <div id="students" class="tab-content active">
+            <div class="section">
+                <h2>Student Management</h2>
+                
+                <div class="form-group">
+                    <h3>Add New Student</h3>
+                    <input type="text" id="student-fname" placeholder="First Name" />
+                    <input type="text" id="student-lname" placeholder="Last Name" />
+                    <input type="text" id="student-dept" placeholder="Department" />
+                    <button onclick="createStudent()">➕ Add</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>List Students</h3>
+                    <button onclick="loadStudents()">🔄 Load</button>
+                </div>
+
+                <div id="students-list" class="list-container">
+                    <p>Click the Load button to display the student list.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INSTRUCTORS TAB -->
+        <div id="instructors" class="tab-content">
+            <div class="section">
+                <h2>Instructor Management</h2>
+                
+                <div class="form-group">
+                    <h3>Add New Instructor</h3>
+                    <input type="text" id="instructor-fname" placeholder="First Name" />
+                    <input type="text" id="instructor-lname" placeholder="Last Name" />
+                    <input type="text" id="instructor-dept" placeholder="Department" />
+                    <button onclick="createInstructor()">➕ Add</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>List Instructors</h3>
+                    <button onclick="loadInstructors()">🔄 Load</button>
+                </div>
+
+                <div id="instructors-list" class="list-container">
+                    <p>Click the Load button to display the instructor list.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COURSES TAB -->
+        <div id="courses" class="tab-content">
+            <div class="section">
+                <h2>Course Management</h2>
+                
+                <div class="form-group">
+                    <h3>Add New Course</h3>
+                    <input type="text" id="course-name" placeholder="Course Name" />
+                    <input type="number" id="course-instructor" placeholder="Instructor ID" />
+                    <button onclick="createCourse()">➕ Add</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>List Courses</h3>
+                    <button onclick="loadCourses()">🔄 Load</button>
+                </div>
+
+                <div id="courses-list" class="list-container">
+                    <p>Click the Load button to display the course list.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENROLLMENTS TAB -->
+        <div id="enrollments" class="tab-content">
+            <div class="section">
+                <h2>Enrollment Management</h2>
+                
+                <div class="form-group">
+                    <h3>Enroll Student in Course</h3>
+                    <input type="number" id="enroll-student" placeholder="Student ID" />
+                    <input type="number" id="enroll-course" placeholder="Course ID" />
+                    <button onclick="enrollStudent()">✅ Enroll</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>Drop Course</h3>
+                    <input type="number" id="drop-student" placeholder="Student ID" />
+                    <input type="number" id="drop-course" placeholder="Course ID" />
+                    <button onclick="dropCourse()">❌ Drop</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>Assign Grade</h3>
+                    <input type="number" id="grade-student" placeholder="Student ID" />
+                    <input type="number" id="grade-course" placeholder="Course ID" />
+                    <select id="grade-value">
+                        <option value="">Select Grade</option>
+                        <option value="AA">AA</option>
+                        <option value="BA">BA</option>
+                        <option value="BB">BB</option>
+                        <option value="CB">CB</option>
+                        <option value="CC">CC</option>
+                        <option value="DC">DC</option>
+                        <option value="DD">DD</option>
+                        <option value="FD">FD</option>
+                        <option value="FF">FF</option>
+                    </select>
+                    <button onclick="assignGrade()">📝 Assign</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>View Student Courses</h3>
+                    <input type="number" id="student-courses-id" placeholder="Student ID" />
+                    <button onclick="loadStudentCourses()">🔄 Load</button>
+                </div>
+
+                <div id="enrollments-list" class="list-container">
+                    <p>Click the relevant button to display enrollment information.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- REPORTS TAB -->
+        <div id="reports" class="tab-content">
+            <div class="section">
+                <h2>Reports and Statistics</h2>
+                
+                <div class="form-group">
+                    <h3>📊 Students Enrolled in Course</h3>
+                    <input type="number" id="report-course-id" placeholder="Course ID" />
+                    <button onclick="reportStudentsPerCourse()">View</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>📊 Student Course List</h3>
+                    <input type="number" id="report-student-id" placeholder="Student ID" />
+                    <button onclick="reportCoursesPerStudent()">View</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>📊 Instructor Workload</h3>
+                    <button onclick="reportInstructorWorkload()">View</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>📊 Department Statistics</h3>
+                    <button onclick="reportDepartmentStatistics()">View</button>
+                </div>
+
+                <div class="form-group">
+                    <h3>📊 Grade Distribution</h3>
+                    <input type="number" id="report-grade-course-id" placeholder="Course ID" />
+                    <button onclick="reportGradeDistribution()">View</button>
+                </div>
+
+                <div id="reports-list" class="list-container">
+                    <p>Click the relevant button to display reports.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Course Registration System - CPE312</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

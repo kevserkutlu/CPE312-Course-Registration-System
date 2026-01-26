@@ -1,372 +1,742 @@
-# 🎓 Course Registration System - CPE312# 🎓 Course Registration System - CPE312
+# 🎓 Course Registration System - CPE312# 🎓 Course Registration System - CPE312# 🎓 Course Registration System - CPE312
 
 
 
-Bu proje, üniversite ortamında ders kayıt süreçlerini yönetmek için geliştirilmiş bir veritabanı yönetim sistemidir. Sistem öğrenciler, öğretim görevlileri, dersler ve kayıtların yönetimini sağlar.Bu proje, üniversite ortamında ders kayıt süreçlerini yönetmek için geliştirilmiş bir veritabanı yönetim sistemidir.
+A comprehensive fullstack university course management system with modern web UI, built with Flask backend and PostgreSQL database.
 
 
 
-## 📋 Sistem Özellikleri## 👥 Proje Ekibi
+## 📋 System FeaturesBu proje, üniversite ortamında ders kayıt süreçlerini yönetmek için geliştirilmiş bir veritabanı yönetim sistemidir. Sistem öğrenciler, öğretim görevlileri, dersler ve kayıtların yönetimini sağlar.Bu proje, üniversite ortamında ders kayıt süreçlerini yönetmek için geliştirilmiş bir veritabanı yönetim sistemidir.
 
-* **Merve Karataş** - 64220045
 
-### ✅ Yapılan İşlemler* **Kevser Kutlu** - 64220018
+
+### ✅ Core Functionality
+
+
+
+- **👥 Student Management** - Add, update, delete, and list students## 📋 Sistem Özellikleri## 👥 Proje Ekibi
+
+- **👨‍🏫 Instructor Management** - Add, update, delete, and list instructors  
+
+- **📖 Course Management** - Add, update, delete, and list courses* **Merve Karataş** - 64220045
+
+- **📋 Enrollment Management** - Register students, drop courses, assign grades
+
+- **📊 Reporting & Analytics** - Five different report types with detailed statistics### ✅ Yapılan İşlemler* **Kevser Kutlu** - 64220018
+
+- **⚠️ Error Handling & Validation** - Comprehensive validation on all operations
 
 - **✓ Öğrenci Yönetimi** - Ekle, güncelle, sil, listele* **Arife Zeynep Muratoğlu** - 64220048
 
+### 📊 Available Reports
+
 - **✓ Öğretim Görevlisi Yönetimi** - Ekle, güncelle, sil, listele
 
-- **✓ Ders Yönetimi** - Ekle, güncelle, sil, listele## 📂 Proje Yapısı
+1. **Students Enrolled in Course** - View all students in a specific course with grades
 
-- **✓ Ders Kayıt İşlemleri** - Kaydet, çıkar, not ver```
+2. **Student Course List** - View all courses a student is enrolled in- **✓ Ders Yönetimi** - Ekle, güncelle, sil, listele## 📂 Proje Yapısı
+
+3. **Instructor Workload** - See workload distribution across all instructors
+
+4. **Department Statistics** - View student and instructor counts per department- **✓ Ders Kayıt İşlemleri** - Kaydet, çıkar, not ver```
+
+5. **Grade Distribution** - Analyze grade distribution in a course
 
 - **✓ Raporlama ve Analitiği** - İstatistikler ve detaylı raporlarCPE312-Course-Registration-System/
 
+## 👥 Project Team
+
 - **✓ Hata Yönetimi ve Validasyon** - Tüm operasyonlarda├── database/
 
-│   └── schema.sql              # Veritabanı şeması ve örnek veriler
+* **Merve Karataş** - 64220045
+
+* **Kevser Kutlu** - 64220018│   └── schema.sql              # Veritabanı şeması ve örnek veriler
+
+* **Arife Zeynep Muratoğlu** - 64220048
 
 ## 👥 Proje Ekibi├── docs/
 
+## 📂 Project Structure
+
 * **Merve Karataş** - 64220045│   └── Course Registration System_Proposal.pdf
 
-* **Kevser Kutlu** - 64220018├── src/
+```
 
-* **Arife Zeynep Muratoğlu** - 64220048│   ├── app.py                  # Ana uygulama
+CPE312-Course-Registration-System/* **Kevser Kutlu** - 64220018├── src/
 
-│   ├── models.py               # SQLAlchemy ORM modelleri
+├── database/
 
-## 📂 Proje Yapısı│   ├── config/
+│   └── schema.sql                      # Database schema and sample data* **Arife Zeynep Muratoğlu** - 64220048│   ├── app.py                  # Ana uygulama
+
+├── docs/
+
+│   └── Course Registration System_Proposal.pdf│   ├── models.py               # SQLAlchemy ORM modelleri
+
+├── src/
+
+│   ├── app.py                          # Legacy app entry point## 📂 Proje Yapısı│   ├── config/
+
+│   ├── models.py                       # SQLAlchemy ORM models
+
+│   ├── config/│   │   └── database/
 
 │   │   └── database/
 
-```│   │       ├── __init__.py
+│   │       ├── __init__.py```│   │       ├── __init__.py
 
-CPE312-Course-Registration-System/│   │       └── db.py           # Veritabanı bağlantı yönetimi
+│   │       └── db.py                   # Database connection management
 
-├── database/│   └── README.md
+│   ├── services/                       # Business logic layerCPE312-Course-Registration-System/│   │       └── db.py           # Veritabanı bağlantı yönetimi
 
-│   └── schema.sql                      # Veritabanı şeması ve örnek veriler├── requirements.txt            # Python bağımlılıkları
+│   │   ├── student_service.py
 
-├── docs/├── .gitignore
+│   │   ├── instructor_service.py├── database/│   └── README.md
 
-│   └── Course Registration System_Proposal.pdf└── README.md
+│   │   ├── course_service.py
 
-├── src/```
+│   │   ├── enrollment_service.py│   └── schema.sql                      # Veritabanı şeması ve örnek veriler├── requirements.txt            # Python bağımlılıkları
 
-│   ├── app.py                          # Ana uygulama (örnek kullanım)
+│   │   └── report_service.py
 
-│   ├── models.py                       # SQLAlchemy ORM modelleri## 🛠️ Teknolojiler
+│   ├── resources/                      # API layer├── docs/├── .gitignore
 
-│   ├── config/* **Database:** PostgreSQL
+│   │   ├── student_resource.py
 
-│   │   └── database/* **Language:** Python 3.11+
+│   │   ├── instructor_resource.py│   └── Course Registration System_Proposal.pdf└── README.md
 
-│   │       ├── __init__.py* **ORM:** SQLAlchemy 2.0.45
+│   │   ├── course_resource.py
 
-│   │       └── db.py                   # Veritabanı bağlantı yönetimi* **Database Driver:** psycopg2-binary
-
-│   ├── services/                       # İş mantığı katmanı
-
-│   │   ├── __init__.py## 📋 Gereksinimler
-
-│   │   ├── enrollment_service.py       # Kayıt işlemleri* Python 3.11 veya daha yüksek
-
-│   │   ├── student_service.py          # Öğrenci CRUD* PostgreSQL 12 veya daha yüksek
-
-│   │   ├── instructor_service.py       # Öğretim görevlisi CRUD* pip (Python paket yöneticisi)
-
-│   │   ├── course_service.py           # Ders CRUD
-
-│   │   └── report_service.py           # Raporlama## 🚀 Kurulum ve Çalıştırma
-
-│   ├── resources/                      # API katmanı
-
-│   │   ├── __init__.py### 1. Projeyi Klonla
-
-│   │   ├── enrollment_resource.py```bash
-
-│   │   ├── student_resource.pygit clone https://github.com/kevserkutlu/CPE312-Course-Registration-System.git
-
-│   │   ├── instructor_resource.pycd CPE312-Course-Registration-System
-
-│   │   ├── course_resource.py```
+│   │   ├── enrollment_resource.py├── src/```
 
 │   │   └── report_resource.py
 
-│   └── README.md### 2. Sanal Ortam Oluştur (Python Virtual Environment)
+│   └── __init__.py│   ├── app.py                          # Ana uygulama (örnek kullanım)
 
-├── requirements.txt                    # Python bağımlılıkları```bash
+├── templates/
 
-├── .gitignore# macOS / Linux
+│   └── index.html                      # Main web interface│   ├── models.py                       # SQLAlchemy ORM modelleri## 🛠️ Teknolojiler
 
-└── README.mdpython3 -m venv .venv
+├── static/
 
-```source .venv/bin/activate
+│   ├── style.css                       # Responsive styling│   ├── config/* **Database:** PostgreSQL
 
+│   └── script.js                       # Frontend JavaScript
 
+├── web.py                              # Flask web application│   │   └── database/* **Language:** Python 3.11+
 
-## 🛠️ Teknolojiler# Windows
+├── requirements.txt                    # Python dependencies
 
-* **Database:** PostgreSQLpython -m venv .venv
+├── run.sh                              # macOS/Linux startup script│   │       ├── __init__.py* **ORM:** SQLAlchemy 2.0.45
 
-* **Language:** Python 3.11+.venv\Scripts\activate
+├── run.bat                             # Windows startup script
 
-* **ORM:** SQLAlchemy 2.0.45```
+└── README.md                           # This file│   │       └── db.py                   # Veritabanı bağlantı yönetimi* **Database Driver:** psycopg2-binary
 
-* **Database Driver:** psycopg2-binary
+```
 
-### 3. Bağımlılıkları Yükle
+│   ├── services/                       # İş mantığı katmanı
 
-## 📋 Gereksinimler```bash
+## 🛠️ Technology Stack
 
-* Python 3.11 veya daha yüksekpip install -r requirements.txt
+│   │   ├── __init__.py## 📋 Gereksinimler
 
-* PostgreSQL 12 veya daha yüksek```
+| Component | Technology |
 
-* pip (Python paket yöneticisi)
+|-----------|-----------|│   │   ├── enrollment_service.py       # Kayıt işlemleri* Python 3.11 veya daha yüksek
 
-### 4. Veritabanı Konfigürasyonu
+| **Frontend** | HTML5, CSS3, JavaScript (Vanilla) |
 
-## 🚀 Kurulum ve ÇalıştırmaPostgreSQL'de `course_registration` adında bir veritabanı oluştur:
+| **Backend** | Python 3.11+, Flask |│   │   ├── student_service.py          # Öğrenci CRUD* PostgreSQL 12 veya daha yüksek
 
+| **ORM** | SQLAlchemy 2.0.45 |
 
+| **Database** | PostgreSQL |│   │   ├── instructor_service.py       # Öğretim görevlisi CRUD* pip (Python paket yöneticisi)
 
-### 1. Projeyi Klonla```sql
+| **Architecture** | Service-Resource Pattern (3-layer architecture) |
 
-```bashCREATE DATABASE course_registration;
+│   │   ├── course_service.py           # Ders CRUD
 
-git clone https://github.com/kevserkutlu/CPE312-Course-Registration-System.git```
+## 📦 Installation
 
-cd CPE312-Course-Registration-System
+│   │   └── report_service.py           # Raporlama## 🚀 Kurulum ve Çalıştırma
 
-```**Not:** `db.py` dosyasında varsayılan bağlantı ayarları:
+### Prerequisites
 
-- Kullanıcı: `postgres`
+│   ├── resources/                      # API katmanı
 
-### 2. Sanal Ortam Oluştur (Python Virtual Environment)- Şifre: `kvyu8dutx`
+- **Python 3.11+** installed
 
-```bash- Host: `127.0.0.1`
+- **PostgreSQL** installed and running│   │   ├── __init__.py### 1. Projeyi Klonla
 
-# macOS / Linux- Port: `5432`
+- **pip** (Python package manager)
 
-python3 -m venv .venv- Veritabanı: `postgres`
+│   │   ├── enrollment_resource.py```bash
 
-source .venv/bin/activate
+### Quick Start (Recommended)
 
-Eğer farklı ayarlar kullanıyorsan, ortam değişkenlerini ayarla:
+│   │   ├── student_resource.pygit clone https://github.com/kevserkutlu/CPE312-Course-Registration-System.git
 
-# Windows```bash
+#### macOS / Linux:
 
-python -m venv .venvexport DB_USER=your_username
-
-.venv\Scripts\activateexport DB_PASSWORD=your_password
-
-```export DB_HOST=your_host
-
-export DB_PORT=your_port
-
-### 3. Bağımlılıkları Yükleexport DB_NAME=your_database_name
-
-```bash```
-
-pip install -r requirements.txt
-
-```### 5. Uygulamayı Çalıştır
+│   │   ├── instructor_resource.pycd CPE312-Course-Registration-System
 
 ```bash
 
-### 4. Veritabanı Konfigürasyonupython3 app.py
+cd CPE312-Course-Registration-System│   │   ├── course_resource.py```
 
-PostgreSQL'de `course_registration` adında bir veritabanı oluştur:```
+chmod +x run.sh
+
+./run.sh│   │   └── report_resource.py
+
+```
+
+│   └── README.md### 2. Sanal Ortam Oluştur (Python Virtual Environment)
+
+#### Windows:
+
+├── requirements.txt                    # Python bağımlılıkları```bash
+
+```cmd
+
+cd CPE312-Course-Registration-System├── .gitignore# macOS / Linux
+
+run.bat
+
+```└── README.mdpython3 -m venv .venv
 
 
 
-```sql**Çıktı:**
+### Manual Setup```source .venv/bin/activate
 
-CREATE DATABASE course_registration;```
 
-```PostgreSQL bağlantısı başarıyla kuruldu! ✅
 
-✓ Tablolar oluşturuldu
+1. **Clone the repository:**
 
-**Not:** `db.py` dosyasında varsayılan bağlantı ayarları:Uygulama çalışıyor...
+```bash
+
+git clone https://github.com/kevserkutlu/CPE312-Course-Registration-System.git## 🛠️ Teknolojiler# Windows
+
+cd CPE312-Course-Registration-System
+
+```* **Database:** PostgreSQLpython -m venv .venv
+
+
+
+2. **Create virtual environment:*** **Language:** Python 3.11+.venv\Scripts\activate
+
+```bash
+
+python3 -m venv .venv* **ORM:** SQLAlchemy 2.0.45```
+
+source .venv/bin/activate  # macOS/Linux
+
+# or* **Database Driver:** psycopg2-binary
+
+.venv\Scripts\activate  # Windows
+
+```### 3. Bağımlılıkları Yükle
+
+
+
+3. **Install dependencies:**## 📋 Gereksinimler```bash
+
+```bash
+
+pip install -r requirements.txt* Python 3.11 veya daha yüksekpip install -r requirements.txt
+
+```
+
+* PostgreSQL 12 veya daha yüksek```
+
+4. **Run the application:**
+
+```bash* pip (Python paket yöneticisi)
+
+python3 web.py
+
+```### 4. Veritabanı Konfigürasyonu
+
+
+
+5. **Open in browser:**## 🚀 Kurulum ve ÇalıştırmaPostgreSQL'de `course_registration` adında bir veritabanı oluştur:
+
+```
+
+http://localhost:5001
+
+```
+
+### 1. Projeyi Klonla```sql
+
+## 🚀 How to Use
+
+```bashCREATE DATABASE course_registration;
+
+### 1. **Students Tab**
+
+- **Add Student**: Fill in first name, last name, and department, then click "Add"git clone https://github.com/kevserkutlu/CPE312-Course-Registration-System.git```
+
+- **List Students**: Click "Load" to see all students with delete options
+
+cd CPE312-Course-Registration-System
+
+### 2. **Instructors Tab**
+
+- **Add Instructor**: Fill in first name, last name, and department, then click "Add"```**Not:** `db.py` dosyasında varsayılan bağlantı ayarları:
+
+- **List Instructors**: Click "Load" to see all instructors
 
 - Kullanıcı: `postgres`
 
-- Şifre: `kvyu8dutx`Toplam 10 öğrenci bulundu:
+### 3. **Courses Tab**
 
-- Host: `127.0.0.1`  - Merve Karatas (Computer Engineering)
+- **Add Course**: Enter course name and instructor ID, then click "Add"### 2. Sanal Ortam Oluştur (Python Virtual Environment)- Şifre: `kvyu8dutx`
 
-- Port: `5432`  - Kevser Kutlu (Software Engineering)
+- **List Courses**: Click "Load" to see all courses
 
-- Veritabanı: `postgres`  ...
+```bash- Host: `127.0.0.1`
+
+### 4. **Enrollments Tab**
+
+- **Enroll Student**: Enter student ID and course ID, click "Enroll"# macOS / Linux- Port: `5432`
+
+- **Drop Course**: Enter student ID and course ID, click "Drop"
+
+- **Assign Grade**: Enter student and course IDs, select a grade, click "Assign"python3 -m venv .venv- Veritabanı: `postgres`
+
+- **View Courses**: Enter student ID to see their enrolled courses
+
+source .venv/bin/activate
+
+### 5. **Reports Tab**
+
+- **Students per Course**: View all students in a specific courseEğer farklı ayarlar kullanıyorsan, ortam değişkenlerini ayarla:
+
+- **Courses per Student**: View all courses a student is enrolled in
+
+- **Instructor Workload**: See all instructors and their teaching load# Windows```bash
+
+- **Department Statistics**: View statistics by department
+
+- **Grade Distribution**: Analyze grade distribution in a coursepython -m venv .venvexport DB_USER=your_username
+
+
+
+## 🏗️ Architecture.venv\Scripts\activateexport DB_PASSWORD=your_password
+
+
+
+### Service-Resource Pattern (3-Layer Architecture)```export DB_HOST=your_host
+
+
+
+```export DB_PORT=your_port
+
+┌─────────────────────────────────────────┐
+
+│         Web Interface (HTML/CSS/JS)     │### 3. Bağımlılıkları Yükleexport DB_NAME=your_database_name
+
+│           (Presentation Layer)          │
+
+└────────────────────────────────────────┘```bash```
+
+                    ↓
+
+┌─────────────────────────────────────────┐pip install -r requirements.txt
+
+│      Flask Routes & Resources           │
+
+│           (API Layer)                   │```### 5. Uygulamayı Çalıştır
+
+│  - StudentResource                      │
+
+│  - InstructorResource                   │```bash
+
+│  - CourseResource                       │
+
+│  - EnrollmentResource                   │### 4. Veritabanı Konfigürasyonupython3 app.py
+
+│  - ReportResource                       │
+
+└────────────────────────────────────────┘PostgreSQL'de `course_registration` adında bir veritabanı oluştur:```
+
+                    ↓
+
+┌─────────────────────────────────────────┐
+
+│         Services (Business Logic)       │
+
+│           (Service Layer)               │```sql**Çıktı:**
+
+│  - StudentService                       │
+
+│  - InstructorService                    │CREATE DATABASE course_registration;```
+
+│  - CourseService                        │
+
+│  - EnrollmentService                    │```PostgreSQL bağlantısı başarıyla kuruldu! ✅
+
+│  - ReportService                        │
+
+└────────────────────────────────────────┘✓ Tablolar oluşturuldu
+
+                    ↓
+
+┌─────────────────────────────────────────┐**Not:** `db.py` dosyasında varsayılan bağlantı ayarları:Uygulama çalışıyor...
+
+│    SQLAlchemy ORM & Models              │
+
+│           (Data Layer)                  │- Kullanıcı: `postgres`
+
+│  - Student                              │
+
+│  - Instructor                           │- Şifre: `kvyu8dutx`Toplam 10 öğrenci bulundu:
+
+│  - Course                               │
+
+│  - Enrollment                           │- Host: `127.0.0.1`  - Merve Karatas (Computer Engineering)
+
+└────────────────────────────────────────┘
+
+                    ↓- Port: `5432`  - Kevser Kutlu (Software Engineering)
+
+┌─────────────────────────────────────────┐
+
+│          PostgreSQL Database            │- Veritabanı: `postgres`  ...
+
+│        (Persistence Layer)              │
+
+└────────────────────────────────────────┘```
 
 ```
 
 Eğer farklı ayarlar kullanıyorsan, ortam değişkenlerini ayarla:
 
+## 🔌 API Endpoints
+
 ```bashUygulamayı durdurmak için: **Ctrl+C**
 
-export DB_USER=your_username
+### Students
 
-export DB_PASSWORD=your_password## 📊 Veritabanı Şeması
+- `GET /api/students` - Get all studentsexport DB_USER=your_username
 
-export DB_HOST=your_host
+- `POST /api/students` - Create a new student
 
-export DB_PORT=your_port### Tablolar
+- `GET /api/students/<id>` - Get a specific studentexport DB_PASSWORD=your_password## 📊 Veritabanı Şeması
 
-export DB_NAME=your_database_name- **student**: Öğrenci bilgileri
+- `PUT /api/students/<id>` - Update a student
 
-```- **instructor**: Öğretim görevlisi bilgileri
+- `DELETE /api/students/<id>` - Delete a studentexport DB_HOST=your_host
+
+
+
+### Instructorsexport DB_PORT=your_port### Tablolar
+
+- `GET /api/instructors` - Get all instructors
+
+- `POST /api/instructors` - Create a new instructorexport DB_NAME=your_database_name- **student**: Öğrenci bilgileri
+
+- `GET /api/instructors/<id>` - Get a specific instructor
+
+- `PUT /api/instructors/<id>` - Update an instructor```- **instructor**: Öğretim görevlisi bilgileri
+
+- `DELETE /api/instructors/<id>` - Delete an instructor
 
 - **course**: Ders bilgileri
 
-### 5. Uygulamayı Çalıştır- **enrollment**: Öğrenci-Ders kayıt bilgileri
+### Courses
 
-```bash
+- `GET /api/courses` - Get all courses### 5. Uygulamayı Çalıştır- **enrollment**: Öğrenci-Ders kayıt bilgileri
 
-python3 app.py### İlişkiler
+- `POST /api/courses` - Create a new course
 
-```- Bir Instructor birden fazla Course'a sahip olabilir
+- `GET /api/courses/<id>` - Get a specific course```bash
 
-- Bir Student birden fazla Course'a kaydolabilir (Enrollment aracılığıyla)
+- `PUT /api/courses/<id>` - Update a course
 
-## 📊 Veritabanı Şeması
+- `DELETE /api/courses/<id>` - Delete a coursepython3 app.py### İlişkiler
+
+
+
+### Enrollments```- Bir Instructor birden fazla Course'a sahip olabilir
+
+- `POST /api/enrollments` - Enroll a student in a course
+
+- `POST /api/enrollments/drop` - Drop a student from a course- Bir Student birden fazla Course'a kaydolabilir (Enrollment aracılığıyla)
+
+- `POST /api/enrollments/grade` - Assign a grade to an enrollment
+
+- `GET /api/enrollments/student/<id>` - Get courses for a student## 📊 Veritabanı Şeması
+
+- `GET /api/enrollments/course/<id>` - Get students in a course
 
 ## 🔧 ORM Modelleri
 
-### Tablolar
+### Reports
 
-### Student
+- `GET /api/reports/students-per-course/<id>` - Students in a course### Tablolar
 
-#### Student (Öğrenci)```python
+- `GET /api/reports/courses-per-student/<id>` - Courses for a student
 
-```sqlfrom src.models import Student
+- `GET /api/reports/instructor-workload` - Instructor workload### Student
 
-CREATE TABLE student (
+- `GET /api/reports/department-statistics` - Department statistics
 
-    student_id SERIAL PRIMARY KEY,# Öğrencileri sorgula
+- `GET /api/reports/grade-distribution/<id>` - Grade distribution#### Student (Öğrenci)```python
 
-    fname VARCHAR(50),with db.session_scope() as session:
 
-    lname VARCHAR(50),    students = session.query(Student).all()
 
-    department VARCHAR(50)```
+## 📊 Database Schema```sqlfrom src.models import Student
 
-);
 
-```### Instructor
 
-```python
+### Student TableCREATE TABLE student (
 
-#### Instructor (Öğretim Görevlisi)from src.models import Instructor
+| Column | Type | Constraint |
 
-```sql
+|--------|------|-----------|    student_id SERIAL PRIMARY KEY,# Öğrencileri sorgula
 
-CREATE TABLE instructor (# Öğretim görevlilerini sorgula
+| student_id | INTEGER | PRIMARY KEY, AUTO_INCREMENT |
+
+| fname | VARCHAR(100) | NOT NULL |    fname VARCHAR(50),with db.session_scope() as session:
+
+| lname | VARCHAR(100) | NOT NULL |
+
+| department | VARCHAR(100) | NOT NULL |    lname VARCHAR(50),    students = session.query(Student).all()
+
+
+
+### Instructor Table    department VARCHAR(50)```
+
+| Column | Type | Constraint |
+
+|--------|------|-----------|);
+
+| instructor_id | INTEGER | PRIMARY KEY, AUTO_INCREMENT |
+
+| fname | VARCHAR(100) | NOT NULL |```### Instructor
+
+| lname | VARCHAR(100) | NOT NULL |
+
+| department | VARCHAR(100) | NOT NULL |```python
+
+
+
+### Course Table#### Instructor (Öğretim Görevlisi)from src.models import Instructor
+
+| Column | Type | Constraint |
+
+|--------|------|-----------|```sql
+
+| course_id | INTEGER | PRIMARY KEY, AUTO_INCREMENT |
+
+| course_name | VARCHAR(150) | NOT NULL |CREATE TABLE instructor (# Öğretim görevlilerini sorgula
+
+| instructor_id | INTEGER | FOREIGN KEY |
 
     instructor_id SERIAL PRIMARY KEY,with db.session_scope() as session:
 
-    fname VARCHAR(50),    instructors = session.query(Instructor).all()
+### Enrollment Table
 
-    lname VARCHAR(50),```
+| Column | Type | Constraint |    fname VARCHAR(50),    instructors = session.query(Instructor).all()
 
-    department VARCHAR(50)
+|--------|------|-----------|
 
-);### Course
+| student_id | INTEGER | FOREIGN KEY, PRIMARY KEY (part) |    lname VARCHAR(50),```
 
-``````python
+| course_id | INTEGER | FOREIGN KEY, PRIMARY KEY (part) |
 
-from src.models import Course
+| grade | VARCHAR(2) | NULLABLE |    department VARCHAR(50)
 
-#### Course (Ders)
 
-```sql# Dersleri sorgula
+
+## 🎨 UI Features);### Course
+
+
+
+- **Responsive Design** - Works on desktop, tablet, and mobile``````python
+
+- **Modern Gradient Theme** - Purple to blue gradient background
+
+- **Tab Navigation** - Easy switching between featuresfrom src.models import Course
+
+- **Real-time Validation** - Input validation with error messages
+
+- **Success/Error Notifications** - Clear feedback on operations#### Course (Ders)
+
+- **Dark Text on Light Background** - Optimal readability
+
+- **Smooth Animations** - Professional transitions and effects```sql# Dersleri sorgula
+
+- **English Interface** - Fully internationalized UI
 
 CREATE TABLE course (with db.session_scope() as session:
 
+## 📝 Sample Data
+
     course_id SERIAL PRIMARY KEY,    courses = session.query(Course).all()
+
+The system includes sample data in the database for testing:
 
     course_name VARCHAR(100),```
 
-    instructor_id INT REFERENCES instructor(instructor_id)
+```sql
 
-);### Enrollment
+-- Sample Students    instructor_id INT REFERENCES instructor(instructor_id)
 
-``````python
+INSERT INTO students (fname, lname, department) 
 
-from src.models import Enrollment
+VALUES ('John', 'Doe', 'Computer Science'););### Enrollment
 
-#### Enrollment (Kayıt)
 
-```sql# Kayıtları sorgula
 
-CREATE TABLE enrollment (with db.session_scope() as session:
+-- Sample Instructors``````python
 
-    enrollment_id SERIAL PRIMARY KEY,    enrollments = session.query(Enrollment).all()
+INSERT INTO instructors (fname, lname, department) 
+
+VALUES ('Dr. Jane', 'Smith', 'Computer Science');from src.models import Enrollment
+
+
+
+-- Sample Courses#### Enrollment (Kayıt)
+
+INSERT INTO courses (course_name, instructor_id) 
+
+VALUES ('Database Systems', 1);```sql# Kayıtları sorgula
+
+
+
+-- Sample EnrollmentsCREATE TABLE enrollment (with db.session_scope() as session:
+
+INSERT INTO enrollments (student_id, course_id, grade) 
+
+VALUES (1, 1, 'AA');    enrollment_id SERIAL PRIMARY KEY,    enrollments = session.query(Enrollment).all()
+
+```
 
     student_id INT REFERENCES student(student_id),```
 
+## 🐛 Troubleshooting
+
     course_id INT REFERENCES course(course_id),
 
-    grade VARCHAR(2)## � Örnek Kullanım
+### PostgreSQL Connection Error
 
-);
+```    grade VARCHAR(2)## � Örnek Kullanım
 
-``````python
+Error: "could not connect to database"
 
-from src.config.database import DatabaseManager
+```);
 
-### İlişkilerfrom src.models import Student, Course, Enrollment
+**Solution**: Make sure PostgreSQL is running
+
+```bash``````python
+
+# macOS with Homebrew
+
+brew services start postgresqlfrom src.config.database import DatabaseManager
+
+
+
+# Linux### İlişkilerfrom src.models import Student, Course, Enrollment
+
+sudo systemctl start postgresql
 
 - Bir Instructor birden fazla Course'a sahip olabilir
 
-- Bir Student birden fazla Course'a kaydolabilir (Enrollment aracılığıyla)# Veritabanına bağlan
+# Windows
+
+# Start PostgreSQL from Services or use pgAdmin- Bir Student birden fazla Course'a kaydolabilir (Enrollment aracılığıyla)# Veritabanına bağlan
+
+```
 
 - Enrollment tablosu Student ve Course arasında Many-to-Many ilişki sağlardb = DatabaseManager()
 
-db.connect()
+### Port 5001 Already in Use
 
-## 🔧 Servis Katmanı (Services)
+The application uses port 5001 by default. If it's in use:db.connect()
 
-# Tüm öğrencileri listele
+```bash
 
-### StudentServicewith db.session_scope() as session:
+# macOS/Linux - Find and kill the process## 🔧 Servis Katmanı (Services)
 
-Öğrenci yönetimi işlemlerini gerçekleştirir:    students = session.query(Student).all()
+lsof -i :5001
+
+kill -9 <PID># Tüm öğrencileri listele
+
+
+
+# Windows - Use Task Manager or PowerShell### StudentServicewith db.session_scope() as session:
+
+netstat -ano | findstr :5001
+
+taskkill /PID <PID> /FÖğrenci yönetimi işlemlerini gerçekleştirir:    students = session.query(Student).all()
+
+```
 
 - `create_student(fname, lname, department)` - Yeni öğrenci ekle    for student in students:
 
-- `update_student(student_id, fname, lname, department)` - Öğrenci güncelle        print(f"{student.fname} {student.lname}")
+### Module Not Found Error
 
-- `delete_student(student_id)` - Öğrenci sil
+Ensure all dependencies are installed:- `update_student(student_id, fname, lname, department)` - Öğrenci güncelle        print(f"{student.fname} {student.lname}")
+
+```bash
+
+pip install -r requirements.txt- `delete_student(student_id)` - Öğrenci sil
+
+```
 
 - `get_student(student_id)` - Tek öğrenci getir# Yeni öğrenci ekle
 
-- `get_all_students()` - Tüm öğrencileri listelewith db.session_scope() as session:
+### Virtual Environment Issues
 
-- `get_students_by_department(department)` - Bölüme göre listele    new_student = Student(
+If the virtual environment is corrupted:- `get_all_students()` - Tüm öğrencileri listelewith db.session_scope() as session:
 
-        fname="Ali",
+```bash
 
-### InstructorService        lname="Demir",
+rm -rf .venv  # macOS/Linux- `get_students_by_department(department)` - Bölüme göre listele    new_student = Student(
 
-Öğretim görevlisi yönetimi işlemlerini gerçekleştirir:        department="Computer Engineering"
+python3 -m venv .venv
 
-- `create_instructor(fname, lname, department)` - Yeni öğretim görevlisi ekle    )
+source .venv/bin/activate        fname="Ali",
 
-- `update_instructor(instructor_id, fname, lname, department)` - Güncelle    session.add(new_student)
+pip install -r requirements.txt
 
-- `delete_instructor(instructor_id)` - Sil
+```### InstructorService        lname="Demir",
 
-- `get_instructor(instructor_id)` - Getir# Bağlantıyı kapat
+
+
+## 📄 LicenseÖğretim görevlisi yönetimi işlemlerini gerçekleştirir:        department="Computer Engineering"
+
+
+
+This project is developed for CPE312 Database Systems course at the university.- `create_instructor(fname, lname, department)` - Yeni öğretim görevlisi ekle    )
+
+
+
+## 📞 Support- `update_instructor(instructor_id, fname, lname, department)` - Güncelle    session.add(new_student)
+
+
+
+For issues or questions, please contact the development team:- `delete_instructor(instructor_id)` - Sil
+
+- Merve Karataş (64220045)
+
+- Kevser Kutlu (64220018)- `get_instructor(instructor_id)` - Getir# Bağlantıyı kapat
+
+- Arife Zeynep Muratoğlu (64220048)
 
 - `get_all_instructors()` - Tüm öğretim görevlilerini listeledb.disconnect()
 
+---
+
 - `get_instructors_by_department(department)` - Bölüme göre listele```
 
+**Version**: 1.0.0  
 
+**Last Updated**: January 27, 2026  
+
+**Status**: ✅ Production Ready
 
 ### CourseService## 🧪 SQL Şemasını Manuel Olarak Yükleme
 
