@@ -214,14 +214,17 @@ class EnrollmentService:
                     'enrollment_id': enrollment.enrollment_id,
                     'course_id': course.course_id,
                     'course_name': course.course_name,
-                    'instructor_name': f'{instructor.fname} {instructor.lname}',
+                    'instructor': f'{instructor.fname} {instructor.lname}',
                     'grade': enrollment.grade
                 })
             
             return {
                 'success': True,
-                'message': f'{student.fname} {student.lname} için {len(courses_data)} ders bulundu',
-                'data': courses_data
+                'message': f'{student.fname} {student.lname} for {len(courses_data)} courses found',
+                'data': {
+                    'student_name': f'{student.fname} {student.lname}',
+                    'courses': courses_data
+                }
             }
         
         except Exception as e:
@@ -267,8 +270,11 @@ class EnrollmentService:
             
             return {
                 'success': True,
-                'message': f'{course.course_name} dersine {len(students_data)} öğrenci kayıtlı',
-                'data': students_data
+                'message': f'{len(students_data)} students registered in {course.course_name}',
+                'data': {
+                    'course_name': course.course_name,
+                    'students': students_data
+                }
             }
         
         except Exception as e:
